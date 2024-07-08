@@ -4,9 +4,9 @@ use rand::Rng;
 
 fn main() {
     println!("Guess the number between 1 and 100!");
-    
-    let secret_number: u32 = rand::thread_rng().gen_range(1..=100); 
-    println!("The secret number is {secret_number}.");
+
+    let secret_number: u32 = rand::thread_rng()
+        .gen_range(1..=100);
 
     loop {
         println!("Enter your guess: ");
@@ -14,8 +14,8 @@ fn main() {
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read line");
-        
-        let guess: u32 = match guess.trim().parse()  {
+
+        let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
                 println!("Please enter a valid number!");
@@ -28,7 +28,7 @@ fn main() {
             Ordering::Equal => {
                 println!("You win!");
                 break;
-            },
+            }
             Ordering::Greater => println!("Too big!")
         };
     }
